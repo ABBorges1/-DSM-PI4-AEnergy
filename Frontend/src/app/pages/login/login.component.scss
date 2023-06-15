@@ -1,0 +1,132 @@
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3F51B5;
+}
+mat-card{
+  width: 25vw;
+  height: 50vh;
+  mat-card-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3F51B5;
+    text-align: center;
+    mat-card-title{
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    mat-card-subtitle{
+      margin-bottom: -5px;
+    }
+  }
+  mat-card-content{
+    margin-top: 20px;
+    text-align: center;
+
+    h5{
+      margin-top: 5px;
+      cursor: pointer;
+    }
+    h5:hover{
+      color: #3F51B5;
+    }
+
+    #login{
+      display: flex;
+      justify-content: center;
+    }
+    #password{
+      display: flex;
+      justify-content: center;
+        mat-icon:hover{
+          cursor: pointer;
+        }
+    }
+    #button{
+      display: flex;
+      justify-content: center;
+      button{
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+mat-spinner{
+  scale: 0.28;
+}
+img{
+  opacity: 0;
+  animation-name: brilhoRaio;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+img:nth-child(2){
+  animation-delay: 1s;
+}
+
+img:nth-child(3){
+  animation-delay: 2s;
+}
+img:nth-child(4){
+  animation-delay: 3s;
+}
+img:nth-child(5){
+  animation-delay: 4s;
+}
+img:nth-child(6){
+  animation-delay: 5s;
+}
+img:nth-child(7){
+  animation-delay: 6s;
+}
+
+img:nth-child(8){
+  animation-delay: 7s;
+}
+@keyframes brilhoRaio {
+  50%{
+    opacity: 0.1;
+  }
+   90%{
+    opacity: 0;
+  }
+}
+mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background: red;
+  border-radius: var(--mdc-snackbar-container-shape, var(--mdc-shape-small, 4px));
+}
+@media only screen and (max-device-width: 1920px) {
+  mat-card{
+    width: 400px;
+    height: 350px;
+  }
+}
+@media only screen and (max-device-width: 1080px) {
+  mat-card{
+    width: 400px;
+    height: 350px;
+  }
+}
+@media only screen and (max-device-width: 600px) {
+  /* .menu { width:600px; } */
+}
+@media (max-width: 660px){
+  mat-card{
+    width: 80vw;
+    height: 55vh;
+  }
+}
+
+mat-form-field{
+  width: 90%;
+}
+

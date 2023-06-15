@@ -1,0 +1,9 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/43dd8f11-d5c0-4a16-8ebb-eebc90831465/resourceGroups/aenergy/providers/Microsoft.Web/sites/aenergy-v1",
+    "appService.deploySubpath": "dist\\dsm-pi4-front",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.showBuildDuringDeployPrompt": false
+}

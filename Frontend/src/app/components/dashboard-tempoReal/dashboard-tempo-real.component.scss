@@ -1,0 +1,62 @@
+body{
+  height: 500px;
+}
+
+.lines {
+  height: 74vh;
+  background-color: var(--body-card);
+  // margin-top: -150px;
+  h1 {
+    font-size: 3em;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--body-text);
+
+  }
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.status-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.status-icon {
+  margin-right: 5px;
+}
+
+.status-text {
+  font-size: 16px;
+}
+
+.red-icon {
+  color: green
+}
+
+.chart-canvas {
+  position: relative;
+  width: 90vw;
+  height: 55vh;
+}
+
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.pulse-animation {
+  animation: pulse 1.5s infinite;
+}

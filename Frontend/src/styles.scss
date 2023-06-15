@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/ngx-toastr/toastr.css';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+html,
+body {
+    height: 100%;
+}
+
+
+:root {
+  --body: #3f51b52c;
+  --text-body: black;
+  --body-card: #fff;
+  --body-text: black;
+  --primary: #3f51b5;
+  --text-primary: #151F29;
+  --primary-chart-grey: #4baf72;
+  --cardSymbolEnergy:  #3f51b5;
+}
+
+:root .dark-theme {
+  --body: #151F29;
+  --text-body: #E2ECF7;
+  --body-card: #2B2F3B;
+  --body-text: #E2ECF7;
+  --primary: #2B2F3B;
+  --text-primary: #E2ECF7;
+  --cardSymbolEnergy: #28316C;
+}

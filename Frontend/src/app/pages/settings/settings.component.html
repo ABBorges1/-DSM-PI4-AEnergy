@@ -1,0 +1,40 @@
+<body>
+
+    <mat-card class="mat-elevation-z6">
+        <mat-card-header>
+            <h1>CONFIGURAÇÕES</h1>
+        </mat-card-header>
+    </mat-card>
+
+    <mat-card *ngIf="userInfo" class="mat-elevation-z6">
+        <mat-card-header>
+            <h1>INFORMAÇÕES DO USUÁRIO</h1>
+        </mat-card-header>
+        <div id="cabecalho">
+            <div>Nome</div>
+            <div>Login</div>
+            <div>Ações</div>
+        </div>
+        <div id="corpo">
+            <div>{{userInfo[0].Name}}</div>
+            <div>{{userInfo[0].Login}}</div>
+            <div id="buttons">
+                <button mat-raised-button color="warn" (click)="goToEditUser()">Alterar Dados</button>
+            </div>
+        </div>
+    </mat-card>
+
+    <mat-card *ngIf="products" class="produtos mat-elevation-z6">
+        <mat-card-header><h1>PRODUTOS</h1></mat-card-header>
+        <div id="cabecalho">
+            <div>Nome</div>
+            <div>ID</div>
+            <div>Status</div>
+        </div>
+        <div id="corpo" *ngFor="let product of products">
+            <div>{{product.NameProduct}}</div>
+            <div>{{product.UUID | textCut}}</div>
+            <div id="status">Ativo</div>
+        </div>
+    </mat-card>
+</body>

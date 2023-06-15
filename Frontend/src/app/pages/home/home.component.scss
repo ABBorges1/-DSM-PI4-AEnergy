@@ -1,0 +1,62 @@
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  mat-drawer {
+    width: 4.5vw;
+    background-color: #3f51b5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    mat-list{
+
+      mat-list-item{
+        cursor: pointer;
+
+        mat-icon{
+          color: white;
+          scale:1.3;
+        }
+      }
+
+      #logout{
+        position: absolute;
+        bottom: 20px;
+
+        #iconLogout{
+          color: #D93F72;
+        }
+      }
+    }
+    mat-list-item{
+      mat-icon{
+        transition: 800ms;
+      }
+    }
+
+    mat-list-item:hover{
+      mat-icon:hover{
+        scale:1.7;
+      }
+    }
+  }
+
+  mat-drawer-content{
+    padding: 20px;
+    background-color: var(--body);
+
+    mat-icon{
+      scale: 2.5;
+      color: white;
+    }
+    mat-icon:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+

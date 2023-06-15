@@ -1,0 +1,53 @@
+<body>
+
+<img style="position: absolute; top: -10%; left: 5%;" src="../../../assets/raio.png" alt="">
+<img style="position: absolute; top: 30%; left: 30%; width: 120px;" src="../../../assets/raio.png" alt="">
+<img style="position: absolute; top: 60%; left: 1%; width: 150px;" src="../../../assets/raio.png" alt="">
+<img style="position: absolute; top: 75%; left: 45%; width: 110px;" src="../../../assets/raio.png" alt="">
+<img style="position: absolute; top: 4%; left: 70%; width: 100px;" src="../../../assets/raio.png" alt="">
+<img style="position: absolute; top: 55%; right: 18%; width: 125px;" src="../../../assets/raio.png" alt="">
+<img style="position: absolute; top: 80%; right: 10%; width: 112px;" src="../../../assets/raio.png" alt="">
+
+
+
+
+
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>BEM VINDO</mat-card-title>
+    <mat-card-subtitle>esteja dentro dos gastos sobre a energia de sua casa </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="login()" >
+      <div id="login">
+        <mat-form-field appearance="outline">
+          <mat-label>Digite seu Email</mat-label>
+          <input formControlName="email" matInput placeholder="exemplo@email.com">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="form.invalid">{{getFormsErros('email')}}</mat-error>
+
+        </mat-form-field>
+      </div>
+      <div id="password">
+        <mat-form-field appearance="outline">
+          <mat-label>Senha - 6 dígitos</mat-label>
+          <input #input formControlName="password" matInput [type]="password">
+          <mat-icon (click)="password === 'password'? password = 'text': password = 'password' " matSuffix>password</mat-icon>
+          <mat-error *ngIf="form.invalid">{{getFormsErros('password')}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div id="button">
+        <button [disabled]="form.invalid || state" mat-raised-button color="primary" type="submit" >
+          <mat-spinner *ngIf="state"></mat-spinner>
+          <span *ngIf="!state">
+            Entrar
+          </span>
+        </button>
+      </div>
+    </form>
+    <!-- <h5 (click)="openDialogRegister()" >CADASTRE-SE</h5> -->
+  </mat-card-content>
+</mat-card>
+
+</body>

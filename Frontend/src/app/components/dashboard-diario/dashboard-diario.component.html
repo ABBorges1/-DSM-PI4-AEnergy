@@ -1,0 +1,91 @@
+<body>
+  <div class="cards">
+    <div class="charts1">
+
+      <mat-card id="media">
+        <div *ngIf="moneyCard === true" id="symbolMoney">
+          <img src="../../../assets/dollar.png" alt="">
+        </div>
+
+        <div *ngIf="energyCard === true" id="energySymbol">
+          <img src="../../../assets/raio.png" alt="">
+        </div>
+
+        <div class="values">
+          <mat-spinner *ngIf="stateValuesConsumptions"></mat-spinner>
+          <div class="fixed" *ngIf="!stateValuesConsumptions">
+            <h2>Média de gasto</h2>
+            <h3>{{type}} {{avearag | decimalCut }}</h3>
+          </div>
+          <div class="standardDeviation" *ngIf="!stateValuesConsumptions">
+            <h4 id="positive">+ {{standardDeviation}}</h4>
+            <h4 id="negative">- {{standardDeviation}}</h4>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card id="media">
+
+        <div *ngIf="moneyCard === true" id="symbolMoney">
+          <img src="../../../assets/dollar.png" alt="">
+        </div>
+
+        <div *ngIf="energyCard === true" id="energySymbol">
+          <img src="../../../assets/raio.png" alt="">
+        </div>
+
+        <div class="values">
+          <div class="fixed ">
+            <h2 *ngIf="!stateValuesConsumptions">Maior gasto do dia</h2>
+            <mat-spinner *ngIf="stateValuesConsumptions"></mat-spinner>
+            <h3 *ngIf="!stateValuesConsumptions">{{type}} {{max | decimalCut}}</h3>
+          </div>
+        </div>
+      </mat-card>
+
+    </div>
+
+    <div class="charts3">
+      <mat-card id="media" *ngIf="dateHourlyFromat">
+        <mat-spinner *ngIf="stateValuesConsumptions"></mat-spinner>
+        <div *ngIf="!stateValuesConsumptions" id="symbolMoney">
+          <img src="../../../assets/dollar.png" alt="">
+        </div>
+
+        <div *ngIf="!stateValuesConsumptions" class="values">
+          <div class="fixed" *ngIf="!stateValuesConsumptions">
+            <h4>Previsão de gasto para proximo dia</h4>
+            <h3>R$ {{ futureForecast | decimalCut }}</h3>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card id="media" *ngIf="!dateHourlyFromat">
+        <div *ngIf="!stateValuesConsumptions" id="symbolMoney">
+          <img src="../../../assets/dollar.png" alt="">
+        </div>
+
+        <div *ngIf="!stateValuesConsumptions" class="values">
+          <mat-spinner *ngIf="stateValuesConsumptions"></mat-spinner>
+          <div class="fixed" *ngIf="!stateValuesConsumptions">
+            <h4>Previsão de gasto para proximo dia <strong>INDISPONIVEL</strong></h4>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="charts2">
+      <mat-card id="gastoTotal">
+        <h2>Consumo Total</h2>
+        <canvas #canvaAllConsumption style="position: relative; width: 30vw; height:655vh; bottom: 0;"></canvas>
+      </mat-card>
+    </div>
+
+  </div>
+
+  <mat-card class="lines">
+    <h1>Consumo Diário </h1>
+    <canvas #canva style="position: relative; width: 90vw; height:65vh"></canvas>
+  </mat-card>
+
+</body>

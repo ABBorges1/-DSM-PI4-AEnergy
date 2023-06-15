@@ -1,0 +1,96 @@
+<div class="body">
+  <h1 class="wellcome">{{msg}}, {{userName}}</h1>
+
+  <div class="headerFixed">
+    <div class="tabHearder">
+      <div routerLinkActive="activeTabsDay" [routerLink]="'dash-diario'"  class="tabs" (click)="onClickHourly()">
+        <mat-icon>today</mat-icon>
+        Diário
+      </div>
+      <div routerLinkActive="activeTabsDay" class="tabs" [routerLink]="'dash-mensal'" (click)="onClickMonth()">
+        <mat-icon>calendar_month</mat-icon>
+        Mensal
+      </div>
+      <div routerLinkActive="activeTabsDay" (click)="onClickRealtime()" [routerLink]="'dash-tempo-real'" class="tabs">
+        <mat-icon>schedule</mat-icon>
+        Realtime
+      </div>
+    </div>
+
+    <div class="selections">
+      <mat-form-field appearance="fill" *ngIf="tabs === 'hourly'">
+        <mat-label>Data do consumo</mat-label>
+        <input readonly="true" (dateInput)="dateSelect($event)" [value]="date" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="tabs === 'month'">
+        <mat-label>Selecione o mês</mat-label>
+        <mat-select [value]="monthSelectes">
+          <mat-option (click)="selectMonth(month.monthNumber)" *ngFor="let month of months" [value]="month.monthNumber">
+            {{month.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill" *ngIf="tabs == 'hourly' || tabs === 'month'">
+        <mat-label>Tipo de consumo</mat-label>
+        <mat-select (valueChange)="typeSelect($event)" [value]="types.money.description">
+          <mat-option *ngFor="let type of typesArray" [value]="type.description">
+            {{type.description}}
+            <mat-icon slot="start" [fontIcon]="type.icon"></mat-icon>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" *ngIf="products && (tabs == 'hourly' || tabs === 'month' || tabs === 'realtime')">
+        <mat-label>Produtos</mat-label>
+        <mat-select (valueChange)="typeSelect($event)" [value]="products[0].id">
+          <mat-option *ngFor="let product of products" [value]="product.id">
+            {{product.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button class="button" *ngIf="tabs == 'hourly' || tabs === 'month'" (click)="onClickUpdateData()" [disabled]="stateButtonUpdate" color="primary" mat-raised-button>
+        <mat-spinner *ngIf="stateButtonUpdate"></mat-spinner>
+        <mat-icon *ngIf="!stateButtonUpdate">update</mat-icon>
+        <span *ngIf="!stateButtonUpdate">Atualizar</span>
+      </button>
+    </div>
+  </div>
+
+  <hr>
+
+  <router-outlet>
+
+  </router-outlet>
+</div>
+<!--
+<div class="cards">
+    <mat-card routerLink="/home/dash-diario">
+        <mat-icon>today</mat-icon>
+        <h1>Dashboard Diário</h1>
+        <p>
+          Identifique os horários de pico e as situações em que há desperdício de energia.
+        </p>
+    </mat-card>
+
+    <mat-card routerLink="/home/dash-mensal">
+        <mat-icon>calendar_month</mat-icon>
+        <h1>Dashboard Mensal</h1>
+        <p>
+            Já o dashboard mensal apresenta uma visão geral do consumo de energia elétrica durante o mês, permitindo que você faça uma análise mais detalhada dos seus hábitos de consumo e planeje melhor o seu orçamento.
+        </p>
+    </mat-card>
+
+    <mat-card routerLink="/home/dash-tempo-real">
+        <mat-icon>schedule</mat-icon>
+        <h1>Dashboard Tempo Real</h1>
+        <p>
+            E, por fim, o dashboard em tempo real permite que você monitore o consumo de energia elétrica da sua casa a qualquer momento do dia, de forma simples e rápida.
+        </p>
+    </mat-card>
+</div> -->

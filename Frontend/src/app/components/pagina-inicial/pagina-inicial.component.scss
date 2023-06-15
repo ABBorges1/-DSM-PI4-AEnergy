@@ -1,0 +1,52 @@
+.selections{
+  margin-top: 20px;
+  display: inline-block;
+  justify-content: flex-start;
+  align-items: center;
+  height: auto;
+}
+mat-form-field{
+  margin-right: 10px;
+}
+.tabs:hover{
+  color: #3f51b5;
+  cursor: pointer;
+}
+.tabHearder{
+  width: 30% ;
+  height: 3em;
+  background-color: var(--body-card) ;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 50px;
+  background-color: #fff;
+}
+.activeTabsDay{
+  background-color: var(--primary);
+  border: none;
+  color: #FFF;
+  border: solid 1px var(--primary);
+  width: 100%;
+  height: 100%;
+}
+.tabs{
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+mat-spinner{
+  scale: 0.30;
+}
+.wellcome{
+  color: var(--text-primary);
+  font-weight: bold;
+}
+.button{
+  margin-top: -18px;
+  height: 50px;
+  color: #FFF;
+}

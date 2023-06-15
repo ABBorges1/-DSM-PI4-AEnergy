@@ -1,0 +1,34 @@
+<h1>CADASTRO</h1>
+<h4>Após o cadastro ser realizado efetue o login</h4>
+
+<div class="form">
+  <form [formGroup]="form" (ngSubmit)="register()" >
+    <div id="login">
+      <mat-form-field appearance="outline">
+        <mat-label>Digite seu Nome</mat-label>
+        <input formControlName="name" matInput>
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="form.invalid">{{getFormsErros('email')}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div id="login">
+      <mat-form-field appearance="outline">
+        <mat-label>Digite seu Email</mat-label>
+        <input formControlName="email" matInput placeholder="exemplo@email.com">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="form.invalid">{{getFormsErros('name')}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div id="password">
+      <mat-form-field appearance="outline">
+        <mat-label>senha</mat-label>
+        <input formControlName="password" matInput [type]="password">
+        <mat-icon (click)="password === 'password'? password = 'text': password = 'password' " matSuffix>password</mat-icon>
+        <mat-error *ngIf="form.invalid">{{getFormsErros('password')}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div id="button">
+      <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit" >Cadastrar</button>
+    </div>
+  </form>
+</div>

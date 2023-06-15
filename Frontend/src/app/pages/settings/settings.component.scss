@@ -1,0 +1,58 @@
+body{
+    
+    .componentsEdit{
+        margin-bottom: 50px;
+        margin-top: -20px;
+    }
+
+    mat-card{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+
+        mat-card-header{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            background-color: #26306d;
+            color: white;
+        }
+
+        #cabecalho{
+            display: flex;
+            background-color: #3F51B5;
+            height: 40px;
+            align-items: center;
+
+            div{
+                width: 33.3%;
+                text-align: center;
+                color: white;
+                font-size: large;
+            }
+        }
+
+        #corpo{
+            display: flex;
+            height: 50px;
+            align-items: center;
+
+            div{
+                width: 33.3%;
+                text-align: center;
+                font-size: large;
+            }
+
+            #status{
+                color: green;
+            }
+
+            #buttons{
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+    }
+}
+

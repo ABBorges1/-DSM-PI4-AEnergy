@@ -1,0 +1,32 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+
+    <mat-list>
+      <mat-list-item routerLink="/home" title="Ínicio" >
+        <mat-icon  matListItemIcon>electric_bolt</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item (click)="toggleMode()" title="modo escuro" >
+        <mat-icon  matListItemIcon>{{themeIcon}}</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item  title="Opções"  [matMenuTriggerFor]="settings" >
+        <mat-icon matListItemIcon>settings</mat-icon>
+      </mat-list-item>
+      <mat-menu #settings="matMenu">
+        <button disabled="true" mat-menu-item>
+          <mat-icon matListItemIcon>person</mat-icon>Perfil
+        </button>
+        <button mat-menu-item (click)="logOut()" id="logout">
+          <mat-icon id="iconLogout">logout</mat-icon> Sair
+        </button>
+      </mat-menu>
+
+    </mat-list>
+
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,51 @@
+h1 {
+    text-align: center;
+    color: #3F51B5;
+    margin-top: 15px;
+}
+h4{
+    text-align: center;
+    color: #BFBFBF;
+}
+
+.form {
+
+    margin-top: 45px;
+
+    #login {
+        display: flex;
+        justify-content: center;
+
+        mat-form-field {
+            width: 90%;
+        }
+    }
+
+    #password {
+        display: flex;
+        justify-content: center;
+
+        mat-form-field {
+            width: 90%;
+
+            mat-icon:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    #button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        button {
+            width: 80%;
+            color: white
+        }
+    }
+}
+
+h1, h4, button, mat-form-field  {
+    font-family: 'Bebas Neue', cursive;
+}

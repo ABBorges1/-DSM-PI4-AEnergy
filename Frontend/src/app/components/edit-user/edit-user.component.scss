@@ -1,0 +1,71 @@
+h1 {
+    text-align: center;
+    color: #3F51B5;
+    margin-top: 15px;
+}
+h4{
+    text-align: center;
+    color: #BFBFBF;
+}
+mat-card{
+    height: 450px;
+    background-color: #FFFFFF;
+
+    mat-card-header{
+        background-color: #3F51B5;
+        display: flex;
+        justify-content: center;
+        
+        h1{
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    mat-card-content{
+        background-color: #FFFFFF;
+
+        .form {
+
+            margin-top: 45px;
+        
+            #login {
+                display: flex;
+                justify-content: center;
+        
+                mat-form-field {
+                    width: 90%;
+                }
+            }
+        
+            #password {
+                display: flex;
+                justify-content: center;
+        
+                mat-form-field {
+                    width: 90%;
+        
+                    mat-icon:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        
+            #button {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+        
+                button {
+                    width: 80%;
+                    color: white;
+                    margin-top: 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
