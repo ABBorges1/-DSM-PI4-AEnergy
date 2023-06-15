@@ -7,7 +7,7 @@ servers:
   - url: https://aenergy-api.azurewebsites.net
 
 tags:
-  - name: Auth
+  - name: Autenticação
     description: Autenticação do usuário
   - name: Produtos
     description: Verificar produtos
@@ -18,7 +18,7 @@ paths:
   /auth:
     post:
       tags:
-        - Auth
+        - Autenticação
       summary: Autenticar usuário
       requestBody:
         required: true
@@ -64,6 +64,56 @@ paths:
                   msg:
                     type: string
                     example: Usuário não encontrado
+
+  /user:
+    post:
+      tags:
+        - Autenticação
+      summary: Cadastrar usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: João Miguel
+                password:
+                  type: string
+                  example: admin123
+                email:
+                  type: string
+                  example: joaomiguelmv_04@hotmail.com
+      responses:
+        "200":
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: Usuário cadastrado com sucesso
+
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 400
+                  error:
+                    type: string
+                    example: Bad Request
+                  message:
+                    type: string
+                    example: Invalid request payload input
 
   /products:
     get:
@@ -130,6 +180,71 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ConsumptionResponse"
+
+  /consumption:
+    post:
+      tags:
+        - Consumo
+      summary: Enviar informações de consumo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                current:
+                  type: number
+                  example: 12
+                power:
+                  type: number
+                  example: 12
+                idProduct:
+                  type: integer
+                  example: 1
+      responses:
+        "200":
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 40719
+                  eletricCurrent:
+                    type: number
+                    example: 12
+                  power:
+                    type: number
+                    example: 12
+                  kwmDate:
+                    type: string
+                    format: date-time
+                    example: "2023-06-12T13:29:20.828Z"
+                  productId:
+                    type: integer
+                    example: 1
+                  kwm:
+                    type: number
+                    example: 0.0002
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                  error:
+                    type: string
+                    example: EntityNotFoundError
+                  message:
+                    type: string
+                    example: A entidade (Produto) não foi encontrada.
 
 components:
   schemas:
