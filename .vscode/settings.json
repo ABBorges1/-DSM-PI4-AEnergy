@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/43dd8f11-d5c0-4a16-8ebb-eebc90831465/resourceGroups/aenergy/providers/Microsoft.Web/sites/aenergy-backend",
+    "appService.deploySubpath": "."
+}

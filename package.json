@@ -1,0 +1,51 @@
+{
+  "name": "backend-pi4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test TZ=America/Sao_Paulo vitest",
+    "test:unit": "npm t -- --config vitest.config.unit.js",
+    "pretest:e2e": "docker compose up -d db-test",
+    "test:e2e": "npm t -- --config vitest.config.e2e.js",
+    "posttest:e2e": "docker compose down",
+    "pretest:integration": "docker compose up -d db-test",
+    "test:integration": "npm t -- --config vitest.config.integration.js",
+    "posttest:integration": "docker compose down",
+    "start:legacy": "cross-env TZ=America/Sao_Paulo node --experimental-specifier-resolution=node src/legacy/index.js",
+    "start": "cross-env TZ=America/Sao_Paulo node --experimental-specifier-resolution=node src/v1/config/index.js",
+    "migrate:up": "node --experimental-specifier-resolution=node src/v1/config/database/migrate-database.js up",
+    "migrate:down": "node --experimental-specifier-resolution=node src/v1/config/database/migrate-database.js down"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^21.3.1",
+    "@hapi/jwt": "^3.2.0",
+    "bcrypt": "^5.1.0",
+    "blipp": "^4.0.2",
+    "boom": "^7.3.0",
+    "dotenv": "^16.0.3",
+    "hapi-auth-jwt2": "^10.4.0",
+    "hapi-cors": "^1.0.3",
+    "joi": "^17.9.1",
+    "jsonwebtoken": "^9.0.0",
+    "klaw-sync": "^6.0.0",
+    "moment": "^2.29.4",
+    "mysql2": "^3.2.3",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.31.0",
+    "socket.io": "^4.6.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "mockdate": "^3.0.5",
+    "socket.io-client": "^4.6.2",
+    "supertest": "^6.3.3",
+    "vitest": "^0.31.0",
+    "vitest-mock-extended": "^1.1.3"
+  }
+}

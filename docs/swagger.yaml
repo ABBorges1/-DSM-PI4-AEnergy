@@ -1,0 +1,247 @@
+openapi: 3.0.3
+info:
+  title: aEnergy API
+  description: API de serviços para o aplicação aEnergy
+  version: 1.0.0
+servers:
+  - url: https://aenergy-api.azurewebsites.net
+
+tags:
+  - name: Auth
+    description: Autenticação do usuário
+  - name: Produtos
+    description: Verificar produtos
+  - name: Consumo
+    description: Obter consumo de energia
+
+paths:
+  /auth:
+    post:
+      tags:
+        - Auth
+      summary: Autenticar usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: adrielbarborges@gmail.com
+                password:
+                  type: string
+                  example: admin123
+      responses:
+        "200":
+          description: Autenticação bem-sucedida
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  user:
+                    type: string
+                    example: adrielbarborges@gmail.com
+                  name:
+                    type: string
+                    example: Adriel
+                  token:
+                    type: string
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkcmllbGJhcmJvcmdlc0BnbWFpbC5jb20iLCJpZCI6MiwiaWF0IjoxNjg2NDk2NzAyfQ.z60yEmePM8b62GTMK9TeDifVV9DbqC0vkzxDqiNMjCk"
+
+        "404":
+          description: Usuário não encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: Usuário não encontrado
+
+  /products:
+    get:
+      tags:
+        - Produtos
+      summary: Obter produtos
+      responses:
+        "200":
+          description: Requisição bem-sucedida
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: "CASA 1"
+                    userId:
+                      type: integer
+                      example: 2
+                    uuid:
+                      type: string
+                      example: "9200a656-9bbb-4951-ba1d-117556bbcb89"
+
+  /products/{productId}/consumptions:
+    get:
+      tags:
+        - Consumo
+      summary: Obter informações de consumo de um produto específico
+      parameters:
+        - name: productId
+          in: path
+          description: ID do produto
+          required: true
+          example: 1
+          schema:
+            type: integer
+        - name: type
+          in: query
+          description: Tipo de consumo (diário, mensal)
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - name: date
+          in: query
+          description: Data no formato YYYY-MM-DD
+          required: true
+          schema:
+            type: string
+            format: date
+          example: 2023-05-18
+      responses:
+        "200":
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConsumptionResponse"
+
+components:
+  schemas:
+    ConsumptionResponse:
+      type: object
+      properties:
+        consumptionsInKw:
+          type: object
+          properties:
+            average:
+              type: number
+              example: 3.04
+            mode:
+              type: array
+              items:
+                type: number
+              example: [1.23]
+            data:
+              type: array
+              items:
+                type: number
+              example:
+                [
+                  1.23,
+                  4.56,
+                  2.34,
+                  0.12,
+                  0.45,
+                  7.89,
+                  0.98,
+                  6.54,
+                  3.21,
+                  0.45,
+                  2.67,
+                  1.34,
+                  3.95,
+                  5.35,
+                  5.18,
+                  5.10,
+                  4.97,
+                  5.01,
+                  5.43,
+                  5.84,
+                  5.59,
+                  4.58,
+                  5.04,
+                  5.27,
+                  4.51,
+                  4.46,
+                  5.90,
+                  4.57,
+                  4.45,
+                  4.37,
+                  4.60,
+                ]
+            max:
+              type: number
+              example: 5.90
+            standardDeviation:
+              type: number
+              example: 2.45
+        consumptionsInMoney:
+          type: object
+          properties:
+            average:
+              type: number
+              example: 2.73
+            mode:
+              type: array
+              items:
+                type: number
+              example: [3.21]
+            data:
+              type: array
+              items:
+                type: number
+              example:
+                [
+                  3.21,
+                  2.34,
+                  4.56,
+                  1.23,
+                  4.59,
+                  6.54,
+                  1.34,
+                  4.56,
+                  5.35,
+                  2.67,
+                  4.81,
+                  3.95,
+                  5.35,
+                  5.18,
+                  5.10,
+                  4.97,
+                  5.01,
+                  5.43,
+                  5.84,
+                  5.59,
+                  4.58,
+                  5.04,
+                  5.27,
+                  4.51,
+                  4.46,
+                  5.90,
+                  4.57,
+                  4.45,
+                  4.37,
+                  4.60,
+                ]
+            max:
+              type: number
+              example: 5.31
+            standardDeviation:
+              type: number
+              example: 2.20
